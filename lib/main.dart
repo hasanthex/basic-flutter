@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/SecondScreen.dart';
+import 'package:flutter_application_2/utils/ListItem.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Pages'),
+      home: const MyHomePage(title: 'Index Page'),
     );
   }
 }
@@ -32,6 +32,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<String> _topic = [
+    'Input',
+    'Column',
+    'Row',
+    'Button',
+    'API',
+    'Text',
+    'List'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SecondScreen()));
-            },
-            child: const Text("go to 2nd screen")),
+      body: ListView.builder(
+        itemCount: _topic.length,
+        itemBuilder: (context, index) {
+          return ListItem(childText: _topic[index]);
+        },
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
