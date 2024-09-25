@@ -7,7 +7,8 @@ class InputScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("second screen"),
+        title: const Text("Input Screen"),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
         child: ElevatedButton(

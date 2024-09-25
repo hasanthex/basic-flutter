@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_application_2/input/InputScreen.dart';
 
 class ListItem extends StatelessWidget {
   final String childText;
+  final Widget childClass;
 
-  const ListItem({super.key, required this.childText});
+  const ListItem(
+      {super.key, required this.childText, required this.childClass});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +16,19 @@ class ListItem extends StatelessWidget {
         height: 100,
         color: Colors.blue,
         child: Center(
-          child: Text(
-            childText,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 28),
+          child: ElevatedButton(
+            child: Text(
+              childText,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurpleAccent,
+                  fontSize: 28),
+            ),
+            onPressed: () {
+              print("$childText clicked");
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => childClass));
+            },
           ),
         ),
       ),

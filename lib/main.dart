@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/SecondScreen.dart';
+import 'package:flutter_application_2/input/InputScreen.dart';
 import 'package:flutter_application_2/utils/ListItem.dart';
 
 void main() {
@@ -32,14 +34,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<String> _topic = [
-    'Input',
-    'Column',
-    'Row',
-    'Button',
-    'API',
-    'Text',
-    'List'
+  final List<Map<dynamic, dynamic>> _topic = [
+    {'topic': 'Inputs', 'page': const InputScreen()},
+    {'topic': 'Column', 'page': const SecondScreen()},
+    {'topic': 'Row', 'page': const InputScreen()},
+    {'topic': 'Button', 'page': const InputScreen()},
+    {'topic': 'API', 'page': const InputScreen()},
+    {'topic': 'Text', 'page': const InputScreen()},
+    {'topic': 'List', 'page': const InputScreen()}
   ];
 
   @override
@@ -52,7 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView.builder(
         itemCount: _topic.length,
         itemBuilder: (context, index) {
-          return ListItem(childText: _topic[index]);
+          return ListItem(
+              childText: _topic[index]['topic'],
+              childClass: _topic[index]['page']);
         },
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
